@@ -6,13 +6,15 @@ body, html {
 }
 
 .background {
-  background: url('keyboard-background.jpg') no-repeat center center/cover;
-  height: 100vh;
-  position: relative;
+  background-image: url('home_page_images/classroom.png');
+  background-size: 120% 120%; /* Zooms in the background */
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .background {
-  background-image: url('classroom.png');
+  background-image: url('home_page_images/classroom.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -33,27 +35,56 @@ body, html {
 }
 
 .tagline {
-  font-size: 4rem;
-  font-weight: bold;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 40px;
   margin-bottom: 0;
-  color: #1a237e; /* Deep blue */
 }
 
-.subtitle {
-  font-size: 1.8rem;
+.tagline span {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #1a237e 30%, #ff9800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  letter-spacing: 3px;
+  text-shadow:
+    0 4px 24px rgba(26,35,126,0.15),
+    0 1px 0 #040114;
+  text-transform: uppercase;
+  transition: background 0.4s;
+  padding: 12px 48px;
+  border-radius: 40px; /* Makes it rounded */
+  background-color: rgba(255,255,255,0.15); /* Subtle pill background */
+  box-shadow: 0 2px 16px rgba(26,35,126,0.08);
+  display: inline-block;
+}
+.subtitle-small {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
   text-align: center;
-  margin-top: 0;       /* Remove top space */
-  margin-bottom: 30px;
-  color: #555;
+  color: #ff9800; /* Changed to vibrant orange */
+  margin-top: 8px;
+  margin-bottom: 32px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px rgba(26,35,126,0.18);
+  display: inline-block;
+  padding: 8px 32px;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(26,35,126,0.10);
+  /* border removed */
 }
 
 .subtitle-small {
   display: block;
   text-align: center;
   font-size: 0.9rem;
-  color: #1a237e; /* Deep blue */
+  color: #040114; /* Deep blue */
   margin-top: 0;
   margin-bottom: 30px;
 }
@@ -66,7 +97,34 @@ body, html {
   flex-wrap: wrap;
 }
 
-.cta img, .section img, .socials img {
+.cta img {
+  width: 180px;   /* Make the CTA image bigger */
+  height: auto;   /* Maintain aspect ratio */
+  border-radius: 20px; /* Rounded corners */
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-text {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #03213be8; /* Vibrant orange, adjust as needed */
+  margin-top: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  background: rgba(255,255,255,0.7); /* Optional: subtle background for contrast */
+  padding: 6px 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.section img, .socials img {
   width: 90px;
   height: 30px;
 }
@@ -76,6 +134,30 @@ body, html {
   flex-direction: column;
   align-items: center;
 }
+
+.sections {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Adjust spacing as needed */
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  margin-bottom: 10px;
+}
+
 
 .socials {
   position: fixed;
