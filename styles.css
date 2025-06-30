@@ -6,19 +6,16 @@ body, html {
 }
 
 .background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-image: url('home_page_images/classroom.png');
-  background-size: 120% 120%; /* Zooms in the background */
+  background-size: 120% 120%; /* or cover */
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;
-}
-
-.background {
-  background-image: url('home_page_images/classroom.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
+  z-index: -1;
 }
 
 .overlay {
@@ -42,52 +39,33 @@ body, html {
   margin-bottom: 0;
 }
 
+.ignite-logo {
+  position: absolute;
+  top: 24px;
+  left: 12px;
+  width: 220px;   /* Adjust size as needed */
+  height: auto;
+  z-index: 200;
+}}
+
 .tagline span {
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, serif;
   font-size: 3.5rem;
-  font-weight: 900;
-  background: linear-gradient(90deg, #1a237e 30%, #ff9800 100%);
+  font-weight: 400;
+  background: linear-gradient(90deg, #ff9800 10%, #1a237e 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  letter-spacing: 3px;
-  text-shadow:
-    0 4px 24px rgba(26,35,126,0.15),
-    0 1px 0 #040114;
-  text-transform: uppercase;
-  transition: background 0.4s;
-  padding: 12px 48px;
-  border-radius: 40px; /* Makes it rounded */
-  background-color: rgba(255,255,255,0.15); /* Subtle pill background */
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px rgba(26,35,126,0.18);
+  padding: 16px 56px;
+  border-radius: 48px;
+  background-color: rgba(255,255,255,0.18);
   box-shadow: 0 2px 16px rgba(26,35,126,0.08);
   display: inline-block;
 }
-.subtitle-small {
-  font-family: 'Poppins', Arial, sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  text-align: center;
-  color: #ff9800; /* Changed to vibrant orange */
-  margin-top: 8px;
-  margin-bottom: 32px;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 12px rgba(26,35,126,0.18);
-  display: inline-block;
-  padding: 8px 32px;
-  border-radius: 20px;
-  box-shadow: 0 2px 12px rgba(26,35,126,0.10);
-  /* border removed */
-}
 
-.subtitle-small {
-  display: block;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #040114; /* Deep blue */
-  margin-top: 0;
-  margin-bottom: 30px;
-}
 
 .cta, .sections, .socials {
   margin: 20px 0;
@@ -124,6 +102,29 @@ body, html {
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
+.cta-button {
+  display: inline-block;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, #ff9800 40%, #1a237e 100%);
+  padding: 12px 32px;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+.cta-button:hover {
+  background: linear-gradient(90deg, #1a237e 40%, #ff9800 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
 .section img, .socials img {
   width: 90px;
   height: 30px;
@@ -157,6 +158,13 @@ body, html {
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   margin-bottom: 10px;
 }
+.demo-bg {
+  background-image: url('demoPage_images/demoPage.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
 
 
 .socials {
@@ -171,4 +179,40 @@ body, html {
   padding: 40px 0;
   z-index: 100;
   color: #fff; /* Add this line for white text */
+}
+
+.form-container {
+  max-width: 420px;
+  margin: 60px auto;
+  background: rgba(255,255,255,0.75);
+  padding: 36px 28px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(26,35,126,0.10);
+  text-align: center;
+}
+
+.form-container h2 {
+  color: #1a237e;
+  margin-bottom: 28px;
+}
+
+.form-container label {
+  display: block;
+  margin: 18px 0 8px;
+  font-weight: 600;
+  color: #1a237e;
+  text-align: left;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"],
+.form-container input[type="number"] {
+  width: 100%;
+  padding: 14px 10px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  box-sizing: border-box;
 }
