@@ -10,6 +10,10 @@ const PORT = 3000;
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Add this block to serve home.html at root URL
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'home.html'));
+});
 
 function isValidFullName(name) {
   return /^[A-Za-z\s'-]{2,60}$/.test(name);
