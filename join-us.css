@@ -1,0 +1,10 @@
+.form-container {
+  max-width: 700px;    /* Increased width */
+  width: 90%;          /* Responsive for smaller screens */
+  margin: 60px auto;
+  background: rgba(255,255,255,0.92);
+  padding: 36px 28px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(26,35,126,0.10);
+  text-align: center;
+}

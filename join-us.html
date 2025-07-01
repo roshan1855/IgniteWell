@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join Us – Ignite Well</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="join-us.css">  
+</head>
+<body class="demo-bg">
+    <div class="form-container">
+        <h2>Join Us</h2>
+        <form action="/join-submit" method="POST">
+            <label>Full Name:</label>
+            <input type="text" name="fullName" required>
+
+            <label>Date of Birth:</label>
+            <input type="date" name="dob">
+
+            <label>Age*:</label>
+            <input type="number" name="age" required>
+
+            <label>Gender*:</label>
+            <select name="gender" required>
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <label>Contact Number*:</label>
+            <input type="tel" name="contact" required>
+
+            <label>Email Address*:</label>
+            <input type="email" name="email" required>
+
+            <label>Residential Address*:</label>
+            <textarea name="address" required></textarea>
+
+            <label>Nationality*:</label>
+            <select name="nationality" required>
+                <option value="">Select</option>
+                <option>India</option>
+                <option>Other Countries</option>
+            </select>
+
+            <label>Professional Background:</label>
+            <input type="text" name="professionalBackground">
+
+            <label>Total Teaching Experience* (in years):</label>
+            <input type="number" name="totalTeachingExp" required>
+
+            <label>Experience Teaching English* (in years):</label>
+            <input type="number" name="englishTeachingExp" required>
+
+            <label>Have you taught English at school/college/coaching level? *(Specify):</label>
+            <input type="text" name="taughtEnglish" required>
+
+            <label>Public Speaking Experience*:</label>
+            <select name="publicSpeaking" required>
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>If Yes, briefly describe your public speaking engagements:</label>
+            <textarea name="publicSpeakingDesc"></textarea>
+
+            <label>Are you comfortable conducting online classes? *:</label>
+            <select name="onlineClasses" required>
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Are you comfortable teaching in online mode? *:</label>
+            <select name="onlineTeaching" required>
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Highest Degree Obtained*:</label>
+            <input type="text" name="degree" required>
+
+            <label>Specialization (if any):</label>
+            <input type="text" name="specialization">
+
+            <label>Name of the College/University:</label>
+            <input type="text" name="college">
+
+            <label>City & State of the College/University:</label>
+            <input type="text" name="collegeCityState">
+
+            <label>Year of Passing*:</label>
+            <input type="number" name="passingYear" required>
+
+            <label>Mode of Study:</label>
+            <select name="modeOfStudy">
+                <option value="">Select</option>
+                <option>Full-Time</option>
+                <option>Part-Time</option>
+                <option>Distance Learning</option>
+                <option>Online</option>
+            </select>
+
+            <label>Is the degree recognized by UGC/AICTE/Any Government Body? (Yes/No)*:</label>
+            <select name="degreeRecognized" required>
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Do you hold any teaching certification (e.g., B.Ed., TESOL, CELTA)?*:</label>
+            <input type="text" name="teachingCert" required>
+
+            <label>Native Language*:</label>
+            <select name="nativeLanguage" required>
+                <option value="">Select</option>
+                <option>Hindi</option>
+                <option>Marathi</option>
+                <option>Telugu</option>
+                <option>Kannada</option>
+                <option>Tamil</option>
+                <option>Other</option>
+            </select>
+
+            <label>All Languages that you know (select all):</label>
+            <input type="text" name="languagesKnown">
+
+            <label>Are you currently employed?*:</label>
+            <select name="currentlyEmployed" required>
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>If yes, please mention current employer, designation, and notice period:</label>
+            <input type="text" name="employerDetails">
+
+            <label>Available Start Date:<s/label>
+            <input type="date" name="startDate">
+
+            <button type="submit" class="cta-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

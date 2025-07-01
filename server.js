@@ -37,6 +37,25 @@ app.post('/submit', (req, res) => {
   res.send('<h2>Thank you! Your submission has been saved.</h2><a href="demo-form.html">Back to form</a>');
 });
 
+app.post('/join-submit', (req, res) => {
+  const joinSubmission = req.body;
+  joinSubmission.timestamp = new Date().toISOString();
+
+  const filePath = path.join(__dirname, 'teacherData.json');
+  let submissions = [];
+
+  if (fs.existsSync(filePath)) {
+    const data = fs.readFileSync(filePath);
+    submissions = JSON.parse(data);
+  }
+
+  submissions.push(joinSubmission);
+
+  fs.writeFileSync(filePath, JSON.stringify(submissions, null, 2));
+
+  res.send('<h2>Thank you for joining us! Your details have been saved.</h2><a href="join-us.html">Back to form</a>');
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
