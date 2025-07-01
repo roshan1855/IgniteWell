@@ -10,6 +10,21 @@ const PORT = 3000;
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+function isValidFullName(name) {
+  return /^[A-Za-z\s'-]{2,60}$/.test(name);
+}
+
+app.post('/join-submit', (req, res) => {
+  const joinSubmission = req.body;
+  // Server-side validation for fullName
+  if (!isValidFullName(joinSubmission.fullName)) {
+    return res.status(400).send('Invalid Full Name. Please use only letters, spaces, hyphens, and apostrophes (2-60 characters).');
+  }
+  joinSubmission.timestamp = new Date().toISOString();
+  // ...rest of your code...
+});
+
 app.post('/submit', (req, res) => {
   const submission = {
     name: req.body.name,

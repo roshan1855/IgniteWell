@@ -1,10 +1,158 @@
+html, body {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+body.demo-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: url('join-us_images/e.png') top center repeat-y;
+  background-size: 100% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*body.demo-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background:
+    url('join-us_images/a.jpg') top center no-repeat,
+    url('join-us_images/b.jpg') 0 780px no-repeat,
+    url('join-us_images/c.jpg') 0 1560px no-repeat,
+    url('join-us_images/d.jpg') 0 2340px no-repeat;
+  background-size:
+    100% 780px,
+    100% 780px,
+    100% 780px,
+    100% 780px;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}*/
 .form-container {
-  max-width: 700px;    /* Increased width */
-  width: 90%;          /* Responsive for smaller screens */
-  margin: 60px auto;
-  background: rgba(255,255,255,0.92);
-  padding: 36px 28px;
+  background: rgba(255,255,255,0.72); /* semi-transparent white */
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(26,35,126,0.10);
-  text-align: center;
+  padding: 36px 28px;
+  max-width: 700px;
+  width: 90%;
+  margin: 40px 0;
+}
+
+
+/* Make all input fields, including date, larger and aligned */
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"],
+.form-container input[type="number"],
+.form-container input[type="date"],
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  max-width: 420px;
+  padding: 14px 10px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Optional: make labels left-aligned and closer to inputs */
+.form-container label {
+  display: block;
+  margin: 18px 0 8px 0;
+  font-weight: 600;
+  color: #1a237e;
+  text-align: left;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.multiselect {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.multi-btn {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  background: #fff;
+  font-size: 1.1rem;
+  text-align: left;
+  cursor: pointer;
+}
+.checkbox-dropdown {
+  display: none;
+  position: absolute;
+  width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1.5px solid #ccc;
+  border-radius: 0 0 10px 10px;
+  z-index: 2;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.checkbox-dropdown label {
+  display: block;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+.checkbox-dropdown label:hover {
+  background: #f0f0f0;
+}
+
+.multiselect {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.multi-btn {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  background: #fff;
+  font-size: 1.1rem;
+  text-align: left;
+  cursor: pointer;
+}
+.checkbox-dropdown {
+  display: none;
+  position: absolute;
+  width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1.5px solid #ccc;
+  border-radius: 0 0 10px 10px;
+  z-index: 2;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  left: 0;
+}
+.checkbox-dropdown label {
+  display: block;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+.checkbox-dropdown label:hover {
+  background: #f0f0f0;
 }

@@ -177,7 +177,16 @@ body, html {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+.demo-img-link img {
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(26,35,126,0.10);
+  border-radius: 18px;
+}
 
+.demo-img-link:hover img {
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 8px 24px rgba(26,35,126,0.18);
+}
 
 .socials {
   position: fixed;

@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Join Us – Ignite Well</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="join-us.css">  
+    <link rel="stylesheet" href="join-us.css">
 </head>
+
+<script>
+let expanded = false;
+function showCheckboxes() {
+  const checkboxes = document.getElementById("checkboxes");
+  checkboxes.style.display = expanded ? "none" : "block";
+  expanded = !expanded;
+}
+
+// Limit to 10 selections and update hidden input and button text
+function limitCheckboxes(checkbox) {
+  const max = 10;
+  const checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]');
+  const checked = Array.from(checkboxes).filter(cb => cb.checked);
+  if (checked.length > max) {
+    checkbox.checked = false;
+    alert("You can select up to 10 languages only.");
+    return false;
+  }
+  // Update hidden input with selected languages
+  const selected = checked.map(cb => cb.value);
+  document.getElementById('languagesKnown').value = selected.join(', ');
+  // Update button text
+  document.getElementById('langBtn').textContent = selected.length ? selected.join(', ') : "Select languages";
+}
+
+// Hide checkboxes when clicking outside
+document.addEventListener('click', function(event) {
+  const multiselect = document.querySelector('.multiselect');
+  if (!multiselect.contains(event.target)) {
+    document.getElementById("checkboxes").style.display = "none";
+    expanded = false;
+  }
+});
+</script>
+
 <body class="demo-bg">
     <div class="form-container">
-        <h2>Join Us</h2>
+        <h2>Inspire the Future – Become a Teacher with Us</h2>
         <form action="/join-submit" method="POST">
             <label>Full Name:</label>
             <input type="text" name="fullName" required>
@@ -43,9 +80,6 @@
                 <option>Other Countries</option>
             </select>
 
-            <label>Professional Background:</label>
-            <input type="text" name="professionalBackground">
-
             <label>Total Teaching Experience* (in years):</label>
             <input type="number" name="totalTeachingExp" required>
 
@@ -72,15 +106,13 @@
                 <option>No</option>
             </select>
 
-            <label>Are you comfortable teaching in online mode? *:</label>
-            <select name="onlineTeaching" required>
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
-
             <label>Highest Degree Obtained*:</label>
-            <input type="text" name="degree" required>
+            <select name="degree" required>
+                <option value="">Select</option>
+                <option>Bachelor’s Degree (e.g., 12+3 or 12+4 years of education)</option>
+                <option>Master’s Degree (Postgraduate qualification after Bachelor’s)</option>
+                <option>Doctorate or Higher (Ph.D. or any degree beyond Master’s)</option>
+            </select>
 
             <label>Specialization (if any):</label>
             <input type="text" name="specialization">
@@ -110,22 +142,38 @@
                 <option>No</option>
             </select>
 
-            <label>Do you hold any teaching certification (e.g., B.Ed., TESOL, CELTA)?*:</label>
-            <input type="text" name="teachingCert" required>
-
-            <label>Native Language*:</label>
-            <select name="nativeLanguage" required>
-                <option value="">Select</option>
-                <option>Hindi</option>
-                <option>Marathi</option>
-                <option>Telugu</option>
-                <option>Kannada</option>
-                <option>Tamil</option>
-                <option>Other</option>
-            </select>
-
-            <label>All Languages that you know (select all):</label>
-            <input type="text" name="languagesKnown">
+            <label>Languages You Speak Fluently (Select All That Apply):</label>
+            <div class="multiselect">
+                <button type="button" class="multi-btn" onclick="showCheckboxes()" id="langBtn">Select
+                    languages</button>
+                <div id="checkboxes" class="checkbox-dropdown">
+                    <label><input type="checkbox" value="English" onclick="limitCheckboxes(this)"> English</label>
+                    <label><input type="checkbox" value="Hindi" onclick="limitCheckboxes(this)"> Hindi</label>
+                    <label><input type="checkbox" value="Bengali" onclick="limitCheckboxes(this)"> Bengali</label>
+                    <label><input type="checkbox" value="Marathi" onclick="limitCheckboxes(this)"> Marathi</label>
+                    <label><input type="checkbox" value="Telugu" onclick="limitCheckboxes(this)"> Telugu</label>
+                    <label><input type="checkbox" value="Tamil" onclick="limitCheckboxes(this)"> Tamil</label>
+                    <label><input type="checkbox" value="Gujarati" onclick="limitCheckboxes(this)"> Gujarati</label>
+                    <label><input type="checkbox" value="Urdu" onclick="limitCheckboxes(this)"> Urdu</label>
+                    <label><input type="checkbox" value="Kannada" onclick="limitCheckboxes(this)"> Kannada</label>
+                    <label><input type="checkbox" value="Odia" onclick="limitCheckboxes(this)"> Odia (Oriya)</label>
+                    <label><input type="checkbox" value="Malayalam" onclick="limitCheckboxes(this)"> Malayalam</label>
+                    <label><input type="checkbox" value="Punjabi" onclick="limitCheckboxes(this)"> Punjabi</label>
+                    <label><input type="checkbox" value="Assamese" onclick="limitCheckboxes(this)"> Assamese</label>
+                    <label><input type="checkbox" value="Maithili" onclick="limitCheckboxes(this)"> Maithili</label>
+                    <label><input type="checkbox" value="Santali" onclick="limitCheckboxes(this)"> Santali</label>
+                    <label><input type="checkbox" value="Kashmiri" onclick="limitCheckboxes(this)"> Kashmiri</label>
+                    <label><input type="checkbox" value="Nepali" onclick="limitCheckboxes(this)"> Nepali</label>
+                    <label><input type="checkbox" value="Konkani" onclick="limitCheckboxes(this)"> Konkani</label>
+                    <label><input type="checkbox" value="Sindhi" onclick="limitCheckboxes(this)"> Sindhi</label>
+                    <label><input type="checkbox" value="Dogri" onclick="limitCheckboxes(this)"> Dogri</label>
+                    <label><input type="checkbox" value="Manipuri" onclick="limitCheckboxes(this)"> Manipuri
+                        (Meitei)</label>
+                    <label><input type="checkbox" value="Bodo" onclick="limitCheckboxes(this)"> Bodo</label>
+                    <label><input type="checkbox" value="Sanskrit" onclick="limitCheckboxes(this)"> Sanskrit</label>
+                </div>
+            </div>
+            <input type="hidden" name="languagesKnown" id="languagesKnown" required>
 
             <label>Are you currently employed?*:</label>
             <select name="currentlyEmployed" required>
@@ -134,14 +182,15 @@
                 <option>No</option>
             </select>
 
-            <label>If yes, please mention current employer, designation, and notice period:</label>
+            <label>If yes, please mention current employer and designation:</label>
             <input type="text" name="employerDetails">
 
-            <label>Available Start Date:<s/label>
-            <input type="date" name="startDate">
+            <label>Available Start Date:<s /label>
+                    <input type="date" name="startDate">
 
-            <button type="submit" class="cta-button">Submit</button>
+                    <button type="submit" class="cta-button">Submit</button>
         </form>
     </div>
 </body>
+
 </html>
