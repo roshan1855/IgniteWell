@@ -1,49 +1,65 @@
-// functions/index.js
-
-const {setGlobalOptions} = require("firebase-functions");
-const {onRequest} = require("firebase-functions/https");
-const {logger} = require("firebase-functions");
+const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 
-setGlobalOptions({region: "us-central1"});
-admin.initializeApp();
+admin.initializeApp(); // Initializes Firebase Admin SDK
 
+// Firestore database reference
 const db = admin.firestore();
 
-exports.submitFormData = onRequest(async (req, res) => {
-  if (req.method !== "POST") {
-    logger.warn("Received non-POST request to submitFormData", {
-      method: req.method,
-    });
-    return res
-        .status(405)
-        .send("Method Not Allowed. This function only accepts POST requests.");
+// Cloud Function to handle demo booking form submissions
+exports.submitDemoRequest = functions.https.onRequest(async (req, res) => {
+  // CORS configuration (important for web apps accessing your function)
+  res.set("Access-Control-Allow-Origin", "https://ignite-873b7.web.app"); // Allow requests from your Hosting URL
+  res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.set("Access-Control-Allow-Headers", "Content-Type");
+
+  // Handle pre-flight OPTIONS request for CORS
+  if (req.method === "OPTIONS") {
+    res.status(204).send("");
+    return;
   }
 
+  // Only accept POST requests
+  if (req.method !== "POST") {
+    return res.status(405)
+        .json({message: "Method Not Allowed. Please use POST."});
+  }
+
+  // Ensure request body is present and in JSON format
   if (!req.body) {
-    logger.warn("No data provided in the request body for submitFormData");
-    return res.status(400).send("No data provided in the request body.");
+    return res.status(400).json({message: "Request body is empty."});
+  }
+
+  const {studentName, studentClass, email, phone, timestamp} = req.body;
+
+  // Basic validation (you'd want more robust validation for production)
+  if (!studentName || !studentClass || !email) {
+    return res.status(400)
+        .json({message: "Student Name, Class, and Email are required."});
   }
 
   try {
-    const formData = req.body;
-    formData.submissionTime = admin.firestore.FieldValue.serverTimestamp();
-
-    const docRef = await db.collection("formSubmissions").add(formData);
-
-    logger.info(`Form data submitted successfully with ID: ${docRef.id}`, {
-      documentId: docRef.id,
-      formData,
+    // Add data to a new collection called 'demoRequests'
+    const docRef = await db.collection("demoRequests").add({
+      studentName,
+      studentClass,
+      email,
+      phone: phone || null, // Store phone or null if not provided
+      clientTimestamp: timestamp || null, // Save client-provided timestamp
+      submissionTime: admin
+          .firestore
+          .FieldValue
+          .serverTimestamp(), // Firestore server timestamp
     });
 
-    return res.status(200).json({
-      message: "Form data successfully stored!",
-      documentId: docRef.id,
-    });
+    console.log("Document written with ID: ", docRef.id);
+    return res.status(200)
+        .json({message: "Demo request successfully saved!.",
+          documentId: docRef.id});
   } catch (error) {
-    logger.error("Error submitting form data:", error, {
-      requestBody: req.body,
-    });
-    return res.status(500).send("Error storing form data.");
+    console.error("Error adding document:", error);
+    return res.status(500)
+        .json({message: "Failed to save demo request.",
+          error: error.message});
   }
 });

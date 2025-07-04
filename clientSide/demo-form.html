@@ -9,8 +9,8 @@
 
 <body class="demo-bg">
   <div class="form-container">
-    <h2>Book a Free Demo</h2>
-    <form action="/submit" method="POST">
+    <h2>Sook a Free Demo</h2>
+    <form id="demoBookingForm"> <!-- Added an ID here and removed action/method -->
       <label for="name">Student Name:</label>
       <input type="text" id="name" name="name" required>
 
@@ -25,7 +25,10 @@
 
       <button type="submit" class="cta-button">Submit</button>
     </form>
+    <div id="formMessage" style="margin-top: 10px; font-weight: bold;"></div> <!-- To display feedback -->
   </div>
+
+  <script src="./demoFormHandler.js"></script> <!-- We'll create this JS file -->
 </body>
 
 </html>
