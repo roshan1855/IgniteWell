@@ -7,12 +7,13 @@ const app = express();
 const PORT = 3000;
 
 // Serve static files (HTML, CSS, images)
-app.use(express.static(__dirname));
+//app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'clientSide')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Add this block to serve home.html at root URL
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'home.html'));
+  res.sendFile(path.join(__dirname, 'clientSide/home.html'));
 });
 
 function isValidFullName(name) {
