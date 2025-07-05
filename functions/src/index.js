@@ -1,10 +1,10 @@
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
+import * as functions from "firebase-functions";
+import {initializeApp} from "firebase-admin/app";
+import {getFirestore, FieldValue} from "firebase-admin/firestore";
 
-admin.initializeApp(); // Initializes Firebase Admin SDK
-
+initializeApp();
 // Firestore database reference
-const db = admin.firestore();
+const db = getFirestore();
 
 // Cloud Function to handle demo booking form submissions
 exports.submitDemoRequest = functions.https.onRequest(async (req, res) => {
@@ -46,10 +46,7 @@ exports.submitDemoRequest = functions.https.onRequest(async (req, res) => {
       email,
       phone: phone || null, // Store phone or null if not provided
       clientTimestamp: timestamp || null, // Save client-provided timestamp
-      submissionTime: admin
-          .firestore
-          .FieldValue
-          .serverTimestamp(), // Firestore server timestamp
+      submissionTime: FieldValue.serverTimestamp(),
     });
 
     console.log("Document written with ID: ", docRef.id);
