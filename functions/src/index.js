@@ -7,7 +7,7 @@ initializeApp();
 const db = getFirestore();
 
 // Cloud Function to handle demo booking form submissions
-exports.submitDemoRequest = functions.https.onRequest(async (req, res) => {
+export const submitDemoRequest = functions.https.onRequest(async (req, res) => {
   // CORS configuration (important for web apps accessing your function)
   res.set("Access-Control-Allow-Origin", "https://ignite-873b7.web.app"); // Allow requests from your Hosting URL
   res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
